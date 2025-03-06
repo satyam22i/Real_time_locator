@@ -1,4 +1,4 @@
-const socket = io(); // Connect to Socket.io server
+const socket = io(); 
 
 if (navigator.geolocation) {
   navigator.geolocation.watchPosition((position) => {
