@@ -16,12 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 
 io.on("connection", function (socket) {
   socket.on("send-loc", function (data) {
-    io.emit("rec-loc", { id: socket.id, ...data })
-  })
-});
+    socket.emit("rec-loc", { id: socket.id, ...data });
+  });
 
-io.on("disconnect", function () {
-  io.emit("user-discon", socket.id);
+  socket.on("disconnect", function () {
+    io.emit("user-discon", socket.id);
+  });
 });
 
 app.get("/", (req, res) => {
